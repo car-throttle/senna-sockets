@@ -1,0 +1,10 @@
+*.DS_Store
+*.sublime-project
+*.sublime-workspace
+app/uploads
+deploy-info.txt
+coverage
+node_modules/
+*npm-debug.log
+tests/artifacts
+tmp/

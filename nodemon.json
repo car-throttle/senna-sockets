@@ -1,0 +1,11 @@
+{
+  "env": {
+    "DEBUG": "SennaSockets:*",
+    "NODE_ENV": "development",
+    "WITH_FRONTEND": "yes"
+  },
+  "exec": "node src/server.js",
+  "watch": [
+    "src/*.js"
+  ]
+}
