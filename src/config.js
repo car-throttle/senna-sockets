@@ -18,7 +18,7 @@ var config = {
   redis: {
     host: process.env.SOCK_REDIS_HOST || 'localhost',
     port: process.env.SOCK_REDIS_PORT || 6379,
-    prefix: 'senna-sockets'
+    prefix: process.env.SOCK_REDIS_PREFIX || 'senna-sockets'
   },
 
   jwt: {

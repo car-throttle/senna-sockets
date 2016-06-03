@@ -268,6 +268,6 @@ Content-Type: application/json
 
 ----
 
-- <sup>[1]</sup>: Now, obviously it would make more sense to integrate a service like this, which fetches data from the
+- <sup>[1]</sup> Now, obviously it would make more sense to integrate a service like this, which fetches data from the
   core of your platform, into the platform itself. However, this implementation is designed to run independently of any
   platform for demonstration (and autoscaling) reasons.
