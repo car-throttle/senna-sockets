@@ -1,6 +1,6 @@
 # Senna-Sockets
 
-> Q: How much effort is it to include "realtime" chat into your application / platform
+> Q: How much effort is it to include "realtime" chat into your application / platform?
 
 Answer: Really not that much!
 
@@ -40,7 +40,7 @@ message in the chat.
 
 ```http
 GET /api/list
-X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozODg2MzZ9.UOFA3A6iCHN62Iobv-5WAzb95uRWuRn8nslhNPMfLz4
+X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozODg2MzZ9.UOFA3A6iCHN62Iobv
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -61,10 +61,10 @@ Content-Type: application/json
         "author": 342676,
         "timestamp": {
           "epoch": 1464896060713,
-          "iso": '2016-06-02T21:42:36.342Z'
+          "iso": "2016-06-02T21:42:36.342Z"
         },
-        "type": 'text',
-        "text": 'Hello, world!'
+        "type": "text",
+        "text": "Hello, world!"
       },
       "timestamp": {
         "epoch": 1464896060713,
@@ -88,10 +88,10 @@ Content-Type: application/json
         "author": 524376,
         "timestamp": {
           "epoch": 1464903576342,
-          "iso": '2016-06-02T21:39:36.342Z'
+          "iso": "2016-06-02T21:39:36.342Z"
         },
-        "type": 'text',
-        "text": 'Hello, world!'
+        "type": "text",
+        "text": "Hello, world!"
       },
       "timestamp": {
         "epoch": 1464857720713,
@@ -117,7 +117,7 @@ You can paginate through results with `page` and `per_page` query strings, which
 
 ```http
 GET /api/user/524376
-X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozODg2MzZ9.UOFA3A6iCHN62Iobv-5WAzb95uRWuRn8nslhNPMfLz4
+X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozODg2MzZ9.UOFA3A6iCHN62Iobv
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -176,9 +176,9 @@ Again, you can paginate through results with `page` and `per_page` query strings
 
 ```http
 POST /api/user/524376
-X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozODg2MzZ9.UOFA3A6iCHN62Iobv-5WAzb95uRWuRn8nslhNPMfLz4
+X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozODg2MzZ9.UOFA3A6iCHN62Iobv
 {
-  "type": "text"
+  "type": "text",
   "text": "Hello, world!"
 }
 
@@ -206,7 +206,7 @@ Content-Type: application/json
 
 ```http
 POST /api/user/524376/215066e1-e4a6-4a67-93b3-372519f7dfff
-X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozODg2MzZ9.UOFA3A6iCHN62Iobv-5WAzb95uRWuRn8nslhNPMfLz4
+X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozODg2MzZ9.UOFA3A6iCHN62Iobv
 {
   "text": "Can't believe I started this chat with \"Hello, world!\" 😢"
 }
@@ -235,7 +235,7 @@ Content-Type: application/json
 
 ```http
 DELETE /api/user/524376/215066e1-e4a6-4a67-93b3-372519f7dfff
-X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozODg2MzZ9.UOFA3A6iCHN62Iobv-5WAzb95uRWuRn8nslhNPMfLz4
+X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozODg2MzZ9.UOFA3A6iCHN62Iobv
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -254,7 +254,8 @@ Content-Type: application/json
 - Information about "users" (through either the `message.author` properties or `chats[n].user` properties) come directly
   from our API, which means this implementation runs alongside our platform, and isn't integrated into it. This also
   means that you can integrate it into your own platform by changing the requests made by [the model](./src/model.js) -
-  just ensure that your API returns results in a timely manner and you won't experience any significant delays[1].
+  just ensure that your API returns results in a timely manner and you won't experience any significant delays
+  <sup>[1]</sup>.
 
 - You should also notice the lack of authentication when fetching data. This is all public data, available for our
   website &amp; our apps, and it's nothing you can't get from visiting our website. But when implementing your own model
@@ -267,6 +268,6 @@ Content-Type: application/json
 
 ----
 
-- [1]: Now, obviously it would make more sense to integrate a service like this, which fetches data from the core of
-  your platform, into the platform itself. However, this implementation is designed to run independently of any platform
-  for demonstration (and autoscaling) reasons.
+- <sup>[1]</sup>: Now, obviously it would make more sense to integrate a service like this, which fetches data from the
+  core of your platform, into the platform itself. However, this implementation is designed to run independently of any
+  platform for demonstration (and autoscaling) reasons.
