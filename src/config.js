@@ -49,10 +49,5 @@ var config = {
 config.isDevelopment = config.environment === 'development';
 config.isProduction = config.environment === 'production';
 
-if (config.isDevelopment) {
-  // config.api.baseUrl = 'http://localhost:3000/';
-  config.redis.host = 'localhost';
-}
-
 debug(config);
 module.exports = config;
