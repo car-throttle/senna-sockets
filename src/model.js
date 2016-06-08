@@ -28,8 +28,8 @@ model.getTopicsByIds = function (topic_ids, callback) {
     headers: {
       'User-Agent': config.api.user_agent
     },
-    query: {
-      fields: 'id,title,status',
+    qs: {
+      fields: 'id,title,status,cover_image_thumbnail',
       ids: topic_ids.join(',')
     }
   }, function (err, res, result) {
@@ -48,8 +48,8 @@ model.getUsersById = function (user_ids, callback) {
     headers: {
       'User-Agent': config.api.user_agent
     },
-    query: {
-      fields: 'id,username,role',
+    qs: {
+      fields: 'id,username,role,picture_url,profile_url',
       ids: user_ids.join(',')
     }
   }, function (err, res, result) {

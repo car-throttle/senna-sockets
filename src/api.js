@@ -203,11 +203,11 @@ router.get('/list', function (req, res, next) {
           switch (item.type) {
             case 'topic':
               item.latest = latest['' + item.type + '-' + item.id] || null;
-              item.topic = data.topics['' + item.id] || {};
+              item.topic = data.topics['' + item.id] || null;
               break;
             case 'user':
               item.latest = latest['' + item.type + '-' + item.id] || null;
-              item.user = data.users['' + item.id] || {};
+              item.user = data.users['' + item.id] || null;
               break;
           }
 
@@ -688,7 +688,7 @@ router.use(function (err, req, res, next) {
 
 var fetchLatestMessageByEntries = function (opts, callback) {
   /* istanbul ignore if */
-  if (!opts || !Array.isArray(opts.entries) || !opts.latest) return callback();
+  if (!opts || !Array.isArray(opts.entries) || !opts.entries.length || !opts.latest) return callback();
   /* istanbul ignore if */
   if (!opts.messages_prefix) return callback(new Error('Missing messages_prefix'));
   /* istanbul ignore if */

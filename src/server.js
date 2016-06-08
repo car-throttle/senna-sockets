@@ -5,12 +5,23 @@ var express = require('express');
 var http = require('http');
 var jwt = require('jsonwebtoken');
 var model = require('./model');
+var morgan = require('morgan');
 var redis = require('redis');
 
 var app = express();
+app.use(morgan('tiny'));
 app.use('/api', require('./api'));
 app.get('/', function (req, res) {
   res.json(config.introductions[Math.floor(Math.random() * config.introductions.length)]);
+});
+app.use(function (req, res) {
+  res.status(404).json({
+    error: true,
+    code: 'NOT_FOUND',
+    name: 'RouteNotFoundError',
+    message: 'Route not found - please check your URL and try again',
+    status: 404
+  });
 });
 
 var server = http.createServer(app);
